@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Survey, Response
+from .models import Survey, Response, Opros
 
 
 class ResponseInLine(admin.TabularInline):
@@ -14,5 +14,6 @@ class SurveyAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Response)
+admin.site.register(Opros)
 
 # Register your models here.
