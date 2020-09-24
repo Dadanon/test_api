@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # My apps
+    'pages.apps.PagesConfig',
     'survey.apps.SurveyConfig',
     'api.apps.ApiConfig',
 

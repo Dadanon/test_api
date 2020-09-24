@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>API urls</title>
+</head>
+<body>
+    <h1>API urls</h1>
+    <b><p>Hello! Here you can see every API endpoint you need :)</p></b><br>
+    <p>Here you can get all the surveys: <a href="{% url 'survey_list' %}">Survey List</a></p><br>
+    <b><p>Another endpoints are only available for the admin :(</p></b><br>
+    <p>An individual survey you can get by clicking: <a href="{% url 'survey_detail' 3 %}">3rd survey for example</a></p>
+    <p>Just replace 3 in the url by what you need</p><br>
+    <p>Here you can create a survey: <a href="{% url 'survey_create' %}">Create Survey</a></p>
+</body>
+</html>

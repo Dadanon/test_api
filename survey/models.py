@@ -13,11 +13,27 @@ class Survey(models.Model):
 
 
 class Response(models.Model):
+    TEXT = 'TX'
+    ONE_CHOICE = 'OC'
+    MANY_CHOICES = 'MC'
+    QUESTION_TYPES = [
+        (TEXT, 'Text'),
+        (ONE_CHOICE, 'One choice'),
+        (MANY_CHOICES, 'Many choices'),
+    ]
     survey = models.ForeignKey(
         Survey,
         on_delete=models.CASCADE,
         related_name='responses',
     )
-    body = models.TextField()
+    question_text = models.TextField()
+    type = models.CharField(
+        max_length=2,
+        choices=QUESTION_TYPES,
+        default=TEXT,
+    )
+
+    def __str__(self):
+        return self.question_text
 
 # Create your models here.
