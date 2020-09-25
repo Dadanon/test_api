@@ -1,17 +1,17 @@
 from rest_framework import serializers
 
-from survey.models import Survey, Response
+from survey.models import Survey, Question
 
 
 class SurveySerializer(serializers.ModelSerializer):
-    responses = serializers.StringRelatedField(many=True)
+    questions = serializers.StringRelatedField(many=True)
 
     class Meta:
         model = Survey
         fields = '__all__'
 
 
-class ResponseSerializer(serializers.ModelSerializer):
+class QuestionSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Response
+        model = Question
         fields = '__all__'

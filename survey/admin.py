@@ -1,19 +1,19 @@
 from django.contrib import admin
-from .models import Survey, Response, Opros
+from .models import Survey, Question, Answer
 
 
-class ResponseInLine(admin.TabularInline):
-    model = Response
+class QuestionInLine(admin.TabularInline):
+    model = Question
     extra = 0
 
 
-@admin.register(Survey)
 class SurveyAdmin(admin.ModelAdmin):
     list_display = ('title', 'started_at', 'finished_at', )
-    inlines = [ResponseInLine, ]
+    inlines = [QuestionInLine, ]
 
 
-admin.site.register(Response)
-admin.site.register(Opros)
+admin.site.register(Survey, SurveyAdmin)
+admin.site.register(Question)
+admin.site.register(Answer)
 
 # Register your models here.
