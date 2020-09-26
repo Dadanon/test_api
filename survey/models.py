@@ -13,9 +13,10 @@ QUESTION_TYPES = [
 
 class Survey(models.Model):
     title = models.CharField(max_length=255, unique=True)
-    started_at = models.DateTimeField()
+    started_at = models.DateTimeField(auto_now_add=False)
     finished_at = models.DateTimeField()
     body = models.TextField()
+    is_active = models.BooleanField(default=False)
 
     def __str__(self):
         return self.title

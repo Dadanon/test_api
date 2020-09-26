@@ -11,6 +11,14 @@ class SurveySerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class SurveySerializerAfterCreate(serializers.ModelSerializer):
+    questions = serializers.StringRelatedField(many=True)
+
+    class Meta:
+        model = Survey
+        fields = ('title', 'finished_at', 'body', 'is_active', 'questions', )
+
+
 class QuestionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Question

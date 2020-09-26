@@ -3,11 +3,15 @@ from rest_framework.decorators import permission_classes
 from rest_framework.permissions import IsAdminUser
 
 from survey.models import Survey, Question
-from .serializers import SurveySerializer, QuestionSerializer
+from .serializers import (
+    SurveySerializer,
+    QuestionSerializer,
+    SurveySerializerAfterCreate,
+)
 
 
 class SurveyListAPIView(generics.ListAPIView):
-    queryset = Survey.objects.all()
+    queryset = Survey.objects.filter(is_active=True)
     serializer_class = SurveySerializer
 
 
@@ -20,7 +24,7 @@ class SurveyCreateAPIView(generics.CreateAPIView):
 @permission_classes([IsAdminUser])
 class SurveyDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Survey.objects.all()
-    serializer_class = SurveySerializer
+    serializer_class = SurveySerializerAfterCreate
 
 
 @permission_classes([IsAdminUser])
@@ -28,5 +32,10 @@ class QuestionDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Question.objects.all()
     serializer_class = QuestionSerializer
 
+
+@permission_classes([IsAdminUser])
+class QuestionCreateAPIView(generics.CreateAPIView):
+    queryset = Question.objects.all()
+    serializer_class = QuestionSerializer
 
 # Create your views here.

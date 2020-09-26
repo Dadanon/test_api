@@ -10,6 +10,13 @@ class QuestionInLine(admin.TabularInline):
 class SurveyAdmin(admin.ModelAdmin):
     list_display = ('title', 'started_at', 'finished_at', )
     inlines = [QuestionInLine, ]
+    readonly_fields = ('started_at', )
+
+    def get_readonly_fields(self, request, obj=None):
+        if obj:
+            return ['started_at', ]
+        else:
+            return []
 
 
 admin.site.register(Survey, SurveyAdmin)
