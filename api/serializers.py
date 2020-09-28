@@ -8,7 +8,7 @@ class SurveySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Survey
-        fields = '__all__'
+        fields = ('title', 'started_at', 'finished_at', 'body', 'questions', )
 
 
 class SurveySerializerAfterCreate(serializers.ModelSerializer):

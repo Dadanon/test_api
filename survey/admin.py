@@ -19,8 +19,13 @@ class SurveyAdmin(admin.ModelAdmin):
             return []
 
 
+class QuestionAdmin(admin.ModelAdmin):
+    list_display = ('question_text', 'survey', )
+    list_filter = ('survey', )
+
+
 admin.site.register(Survey, SurveyAdmin)
-admin.site.register(Question)
+admin.site.register(Question, QuestionAdmin)
 admin.site.register(Answer)
 
 # Register your models here.
