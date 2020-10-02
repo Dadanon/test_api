@@ -6,7 +6,7 @@ from survey.models import Survey, Question
 from .serializers import (
     SurveySerializer,
     QuestionSerializer,
-    SurveySerializerAfterCreate,
+    SurveyDetailSerializer,
 )
 
 
@@ -24,7 +24,7 @@ class SurveyCreateAPIView(generics.CreateAPIView):
 @permission_classes([IsAdminUser])
 class SurveyDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Survey.objects.all()
-    serializer_class = SurveySerializerAfterCreate
+    serializer_class = SurveyDetailSerializer
 
 
 @permission_classes([IsAdminUser])
